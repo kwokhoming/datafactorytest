@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "khmdf1"
+		},
+		"ADLS_lego_accountKey": {
+			"value": ""
+		},
+		"LegoBlobLog_connectionString": {
+			"value": ""
+		},
+		"ADLS_lego_properties_typeProperties_url": {
+			"value": "https://khmdbdatalakestorageacc.dfs.core.windows.net"
+		},
+		"HttpLegoServer1_properties_typeProperties_url": {
+			"value": "https://cdn.rebrickable.com/media/downloads/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
