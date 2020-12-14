@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_13m",
+	"name": "destDS_dlsa",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ADLS_lego",
