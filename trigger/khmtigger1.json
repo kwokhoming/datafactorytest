@@ -1,0 +1,18 @@
+{
+	"name": "khmtigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 5,
+				"startTime": "2020-12-14T11:57:00Z",
+				"endTime": "2020-12-14T12:14:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
