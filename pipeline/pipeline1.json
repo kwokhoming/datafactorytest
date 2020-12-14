@@ -64,26 +64,6 @@
 								"variableName": "Files",
 								"value": "part_relationships"
 							}
-						},
-						{
-							"name": "Set variable2",
-							"type": "SetVariable",
-							"dependsOn": [
-								{
-									"activity": "Append variable2",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "ListofFiles",
-								"value": {
-									"value": "@variables('Files')",
-									"type": "Expression"
-								}
-							}
 						}
 					]
 				}
@@ -98,9 +78,6 @@
 		"variables": {
 			"Files": {
 				"type": "Array"
-			},
-			"ListofFiles": {
-				"type": "String"
 			}
 		},
 		"annotations": []
