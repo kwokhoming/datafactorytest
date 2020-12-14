@@ -8,6 +8,9 @@
 		"ADLS_lego_accountKey": {
 			"value": ""
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
 		"LegoBlobLog_connectionString": {
 			"value": ""
 		},

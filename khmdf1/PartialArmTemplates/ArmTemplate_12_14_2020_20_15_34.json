@@ -6,26 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "khmdf1"
-		},
-		"ADLS_lego_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'ADLS_lego'"
-		},
-		"AzureSqlDatabase1_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
-		},
-		"LegoBlobLog_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'LegoBlobLog'"
-		},
-		"ADLS_lego_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://khmdbdatalakestorageacc.dfs.core.windows.net"
-		},
-		"HttpLegoServer1_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://cdn.rebrickable.com/media/downloads/"
 		}
 	},
 	"variables": {
@@ -53,14 +33,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "khmmapdf1",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -145,15 +119,13 @@
 						"inputs": [
 							{
 								"referenceName": "sourceDS_http_csv",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "destDS_dlsa",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
@@ -162,8 +134,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/sourceDS_http_csv')]",
-				"[concat(variables('factoryId'), '/datasets/destDS_dlsa')]",
-				"[concat(variables('factoryId'), '/linkedServices/LegoBlobLog')]"
+				"[concat(variables('factoryId'), '/datasets/destDS_dlsa')]"
 			]
 		},
 		{
@@ -183,9 +154,7 @@
 					"table": "themes"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/destDS_dlsa')]",
@@ -211,9 +180,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ADLS_lego')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/sourceDS_http_csv')]",
@@ -253,66 +220,6 @@
 					}
 				]
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/HttpLegoServer1')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ADLS_lego')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('ADLS_lego_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('ADLS_lego_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/HttpLegoServer1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('HttpLegoServer1_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LegoBlobLog')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('LegoBlobLog_connectionString')]"
-				}
-			},
 			"dependsOn": []
 		},
 		{
@@ -327,8 +234,7 @@
 						"pipelineReference": {
 							"referenceName": "lego_http_to_adls_themes",
 							"type": "PipelineReference"
-						},
-						"parameters": {}
+						}
 					}
 				],
 				"type": "ScheduleTrigger",
