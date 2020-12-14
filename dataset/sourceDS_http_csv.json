@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_13m",
+	"name": "sourceDS_http_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpLegoServer1",
