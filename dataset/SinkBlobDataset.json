@@ -14,7 +14,10 @@
 					"value": "@CONCAT(pipeline().RunId, '.txt')",
 					"type": "Expression"
 				},
-				"container": "@pipeline().parameters.sinkBlobContainer"
+				"container": {
+					"value": "@pipeline().parameters.sinkBlobContainer",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
