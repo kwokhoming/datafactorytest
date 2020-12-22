@@ -10,8 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "input.txt",
 				"container": {
-					"value": "@pipeline().parameters.sourceBlobContainer/input/input.txt",
+					"value": "@pipeline().parameters.sourceBlobContainer",
 					"type": "Expression"
 				}
 			},
