@@ -3,7 +3,19 @@
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
-		"pipelines": [],
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"sourceBlobContainer ": "adftutorial/adfv2branch/input",
+					"sinkBlobContainer": "adftutorial/adfv2branch/output",
+					"receiver": "kwokhoming@gmail.com"
+				}
+			}
+		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
