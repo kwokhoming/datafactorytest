@@ -10,11 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@CONCAT(pipeline().RunId, '.txt')",
-				"container": {
-					"value": "@pipeline().parameters.sinkBlobContainer",
+				"fileName": {
+					"value": "@CONCAT(pipeline().RunId, '.txt')",
 					"type": "Expression"
-				}
+				},
+				"container": "@pipeline().parameters.sinkBlobContainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
