@@ -11,10 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "input.txt",
-				"container": {
-					"value": "@pipeline().parameters.sourceBlobContainer",
-					"type": "Expression"
-				}
+				"container": "@pipeline().parameters.sourceBlobContainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
