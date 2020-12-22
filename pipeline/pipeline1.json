@@ -59,6 +59,32 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "SendSuccessEmailActivity",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://prod-08.eastasia.logic.azure.com:443/workflows/cee90a7d70cf44dc98a9ad180245e29f/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=_Xa1qPTmmln-O5D9vWCREoY20FLBifgM7puomKMzm-Y",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"message": "@{activity('Copy1').output.dataWritten}",
+						"dataFactoryName": "@{pipeline().DataFactory}",
+						"pipelineName": "@{pipeline().Pipeline}",
+						"receiver": "@pipeline().parameters.receiver"
+					}
+				}
 			}
 		],
 		"parameters": {
