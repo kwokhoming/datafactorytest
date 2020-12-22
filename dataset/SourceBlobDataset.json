@@ -10,8 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "emp.txt",
-				"container": "@pipeline().parameters.sourceBlobContainer"
+				"container": {
+					"value": "@pipeline().parameters.sourceBlobContainer/input/input.txt",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
